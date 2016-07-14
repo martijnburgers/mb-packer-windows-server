@@ -9,7 +9,7 @@
    | |  __/ | | | | | |_) | | (_| | ||  __/\__ \ |  _| (_) | |    |  __/ (_| | (__|   <  __/ |   
    |_|\___|_| |_| |_| .__/|_|\__,_|\__\___||___/ |_|  \___/|_|    |_|   \__,_|\___|_|\_\___|_|   
                     |_|
- MB Windows Server Templates for Packer - Latest version:0.1.0                                                                                                                                                         
+ MB Windows Server Templates for Packer - Latest version:0.1.0
 ```
 
 ### Introduction
