@@ -16,51 +16,51 @@
 
 This repository contains a few Windows server templates that can be used to create boxes for Vagrant ([Website](https://www.vagrantup.com/)) ([Github](https://github.com/mitchellh/vagrant)) using Packer ([Website](https://www.packer.io)) ([Github](https://github.com/mitchellh/packer)).
 
-This repo borrowed most of it's bits from [Packer-Windows](https://github.com/joefitzgerald/packer-windows). All the credits go to all of the contributors of [Packer-Windows](https://github.com/joefitzgerald/packer-windows). Modifications were made to build the boxes my way (i.e. sysprepping on shutdown with custom answer file, first logon command hook, customized vagrant template and disabled password complexity settings). Modifications where also made to work arround some issues I got with the [Packer-Windows](https://github.com/joefitzgerald/packer-windows) templates.
+This repo borrowed most of it's bits from [Packer-Windows](https://github.com/joefitzgerald/packer-windows). In fact this repo is forked from the [Packer-Windows](https://github.com/joefitzgerald/packer-windows) repo. All the credits go to all of the contributors of [Packer-Windows](https://github.com/joefitzgerald/packer-windows). Modifications were made to build the boxes my way (i.e. sysprepping on shutdown with custom answer file, first logon command hook, customized vagrant template and disabled password complexity settings). Modifications where also made to work arround some issues I got with the [Packer-Windows](https://github.com/joefitzgerald/packer-windows) templates.
 
 The templates currently support only Virtual Box as the hypervisor but with some work they should be working on other hypervisors as well (I only tested them against Virtual Box). If you look in the original [Packer-Windows](https://github.com/joefitzgerald/packer-windows) repo you will also see support for VMware.
 
 ### Getting Started
 
-.1. [Download & Install Virtual Box](https://www.virtualbox.org/wiki/Downloads)
-.2. [Download & Install Vagrant](https://www.vagrantup.com/downloads.html)
-.3. [Download & Install Packer](https://www.packer.io/downloads.html)
-.4. Clone this repo to a local directory
-.5. CD into the directory.
+1. [Download & Install Virtual Box](https://www.virtualbox.org/wiki/Downloads)
+2. [Download & Install Vagrant](https://www.vagrantup.com/downloads.html)
+3. [Download & Install Packer](https://www.packer.io/downloads.html)
+4. Clone this repo to a local directory
+5. CD into the directory.
 
-Trial versions of Windows 2008 R2 / 2012 R2 are used and downloaded by default. These images can be used for 180 days without activation.
+	Trial versions of Windows 2008 R2 / 2012 R2 are used and downloaded by default. These images can be used for 180 days without activation.
 
-.6. Run (make sure the packer command is on the PATH):
+6. Run (make sure the packer command is on the PATH):
 
-```
-packer build windows_2012_r2_sysprepped.json
-```
+	```
+	packer build windows_2012_r2_sysprepped.json
+	```
 
-After a long wait, the result of the packer build command will be a Vagrant `windows_2012_r2_virtualbox.box` file.
+	After a long wait, the result of the packer build command will be a Vagrant `windows_2012_r2_virtualbox.box` file.
 
-.7. Add the box to Vagrant.
+7. Add the box to Vagrant.
 
-```
-vagrant box add my-new-box file:///d:/mb-windows-server-packer/windows_2012_r2_virtualbox.box
-```
+	```
+	vagrant box add my-new-box file:///d:/mb-windows-server-packer/windows_2012_r2_virtualbox.box
+	```
 
-.8. Create a directory `my-new-vm` somewhere and CD into it.
+8. Create a directory `my-new-vm` somewhere and CD into it.
 
-.9. Init the box.
+9. Init the box.
 
-```
-vagrant init my-new-box
-```
+	```
+	vagrant init my-new-box
+	```
 
-This will create a `Vagrantfile` file. Here you can define some properties of your VM and hypervisor. For example the computer name, shared folders or it's IP address.
+	This will create a `Vagrantfile` file. Here you can define some properties of your VM and hypervisor. For example the computer name, shared folders or it's IP address.
 
-.10. Up your VM.
+10. Up your VM.
 
-```
-vagrant up
-```
+	```
+	vagrant up
+	```
 
-This will create your VM or brings it up if it was already created before.
+	This will create your VM or brings it up if it was already created before.
 
 ----------
 
