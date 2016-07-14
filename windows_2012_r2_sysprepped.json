@@ -1,46 +1,17 @@
 {
-  "builders": [
-    {
-      "type": "vmware-iso",
-      "iso_url": "{{user `iso_url`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "iso_checksum": "{{user `iso_checksum`}}",
-      "headless": true,
-      "boot_wait": "2m",
-      "ssh_username": "vagrant",
-      "ssh_password": "vagrant",
-      "ssh_wait_timeout": "6h",
-      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "guest_os_type": "windows8srv-64",
-      "tools_upload_flavor": "windows",
-      "disk_size": 61440,
-      "vnc_port_min": 5900,
-      "vnc_port_max": 5980,
-      "floppy_files": [
-        "{{user `autounattend`}}",
-        "./scripts/microsoft-updates.bat",
-        "./scripts/win-updates.ps1",
-        "./scripts/openssh.ps1"
-      ],
-      "vmx_data": {
-        "RemoteDisplay.vnc.enabled": "false",
-        "RemoteDisplay.vnc.port": "5900",
-        "memsize": "2048",
-        "numvcpus": "2",
-        "scsi0.virtualDev": "lsisas1068"
-      }
-    },
+  "builders": [    
     {
       "type": "virtualbox-iso",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "headless": true,
-      "boot_wait": "2m",
+      "boot_wait": "8m",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "6h",
-      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+	  "shutdown_command": "c:/windows/system32/sysprep/sysprep.exe /generalize /oobe /quiet /shutdown /unattend:c:/Windows/Temp/Autounattend_sysprep.xml",
+      "shutdown_timeout": "15m",
       "guest_os_type": "Windows2012_64",
       "disk_size": 61440,
       "floppy_files": [
@@ -48,7 +19,9 @@
         "./scripts/microsoft-updates.bat",
         "./scripts/win-updates.ps1",
         "./scripts/openssh.ps1",
-        "./scripts/oracle-cert.cer"
+        "./scripts/oracle-cert.cer",
+        "./scripts/disable-password-complexity.ps1",
+		"./scripts/IE.Add.Google.SearchProvider.reg"
       ],
       "vboxmanage": [
         [
@@ -79,6 +52,16 @@
         "./scripts/disable-auto-logon.bat",
         "./scripts/compact.bat"
       ]
+    },
+    {
+      "type": "file",
+      "source": "./answer_files/2012_r2/Autounattend_sysprep.xml",
+      "destination": "c:/Windows/Temp/Autounattend_sysprep.xml"
+    },
+	{
+      "type": "file",
+      "source": "./scripts/FirstLogonCommand.ps1",
+      "destination": "c:/Windows/Temp/FirstLogonCommand.ps1"
     }
   ],
   "post-processors": [
@@ -86,7 +69,7 @@
       "type": "vagrant",
       "keep_input_artifact": false,
       "output": "windows_2012_r2_{{.Provider}}.box",
-      "vagrantfile_template": "vagrantfile-windows_2012_r2.template"
+      "vagrantfile_template": "vagrantfile-windows_2012_r2_sysprepped.template"
     }
   ],
   "variables": {

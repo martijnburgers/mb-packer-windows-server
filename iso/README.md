@@ -6,17 +6,11 @@ For example, you might want to start with one of the following:
 
 * Windows Server 2008 R2 + SP1: 
 	* File Name: en_windows_server_2008_r2_with_sp1_x64_dvd_617601.iso
-	* SHA1 Hash: D3FD7BF85EE1D5BDD72DE5B2C69A7B470733CD0A
+	* MD5 Hash: 8dcde01d0da526100869e2457aafb7ca
+    * SHA-1 Hash: d3fd7bf85ee1d5bdd72de5b2c69a7b470733cd0a
 	* Direct Download: http://msdn.microsoft.com/subscriptions/json/GetDownloadRequest?brand=MSDN&locale=en-us&fileId=44782&activexDisabled=true&akamaiDL=false
-* Windows Server 2008 R2 + SP1 (Volume License): 
-	* File Name: en_windows_server_2008_r2_with_sp1_vl_build_x64_dvd_617403.iso
-	* SHA1 Hash: 7E7E9425041B3328CCF723A0855C2BC4F462EC57
-	* Direct Download: http://msdn.microsoft.com/subscriptions/json/GetDownloadRequest?brand=MSDN&locale=en-us&fileId=44783&activexDisabled=true&akamaiDL=false
-* Windows Server 2012:
-	* File Name: en_windows_server_2012_x64_dvd_915478.iso
-	* SHA1 Hash: D09E752B1EE480BC7E93DFA7D5C3A9B8AAC477BA
-	* Direct Download: http://msdn.microsoft.com/subscriptions/json/GetDownloadRequest?brand=MSDN&locale=en-us&fileId=50539&activexDisabled=true&akamaiDL=false
-* Windows Server 2012 (Volume License):
-	* File Name: en_windows_server_2012_vl_x64_dvd_917758.iso
-	* SHA1 Hash: 063BC26ED45C50D3745CCAD52DD7B3F3CE13F36D
-	* Direct Download: http://msdn.microsoft.com/subscriptions/json/GetDownloadRequest?brand=MSDN&locale=en-us&fileId=50573&activexDisabled=true&akamaiDL=false
+* Windows Server 2012 R2 with update:
+	* File Name: en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso
+   	* MD5 Hash: 78bff6565f178ed08ab534397fe44845
+ 	* SHA-1 Hash: 865494e969704be1c4496d8614314361d025775e
+	* Direct Download: https://msdn.microsoft.com/subscriptions/json/GetDownloadRequest?brand=MSDN&locale=nl-nl&fileId=62611&activexDisabled=true&akamaiDL=false

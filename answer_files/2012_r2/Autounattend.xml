@@ -64,7 +64,13 @@
                 <!-- Product Key from http://technet.microsoft.com/en-us/library/jj612867.aspx -->
                 <ProductKey>
                     <!-- Do not uncomment the Key element if you are using trial ISOs -->
-                    <!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->
+                    <!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->					
+					<!--
+					KMS Client Setup Keys (GVLK's):
+					Windows Server 2012 R2 Server Standard - D2N9P-3P6X9-2R39C-7RTCD-MDVJX
+					Windows Server 2012 R2 Datacenter - W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9
+					Windows Server 2012 R2 Essentials - KNC87-3J2TX-XB4WP-VCPJV-M4FWM
+					-->					
                     <!--<Key>D2N9P-3P6X9-2R39C-7RTCD-MDVJX</Key>-->
                     <WillShowUI>OnError</WillShowUI>
                 </ProductKey>
@@ -232,6 +238,18 @@
                     <CommandLine>cmd.exe /c wmic useraccount where "name='vagrant'" set PasswordExpires=FALSE</CommandLine>
                     <Order>22</Order>
                     <Description>Disable password expiration for vagrant user</Description>
+                </SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+                    <CommandLine>cmd.exe /c powershell -File a:\disable-password-complexity.ps1</CommandLine>
+                    <Description>Disable password complexity</Description>
+                    <Order>23</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>    				
+				<SynchronousCommand wcm:action="add">
+                    <CommandLine>%SystemRoot%\System32\reg.exe import a:\IE.Add.Google.SearchProvider.reg</CommandLine>
+                    <Description>Add Google Search Provider in IE</Description>
+                    <Order>24</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <!-- WITHOUT WINDOWS UPDATES -->
                 <!--
